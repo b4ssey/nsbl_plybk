@@ -1,0 +1,35 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+    - name: install updates (CentOS)
+      dnf:
+        update_only: yes
+        update_cache: yes
+      when: ansible_distribution == "CentOS"
+
+    - name: install updates (Ubuntu)
+      apt:
+        upgrade: dist
+        update_cache: yes
+      when: ansible_distribution == "Update" 
+
+- hosts: k8s_control_plane
+  become: true
+  tasks:
+    - name: install apache and php for Ubuntu Server
+      apt: 
+        name: 
+          - apache2
+          - libapache2-mod-php
+        state: latest
+      when: ansible_distribution == "Ubuntu"
+    
+    - name: install apache and php for CentOS Server
+      dnf: 
+        name: 
+          - httpd
+          - php
+        state: latest
+      when: ansible_distribution == "CentOS"
