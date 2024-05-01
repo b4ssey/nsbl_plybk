@@ -1,0 +1,5 @@
+- name: add ssh key for nwaboi
+  tags: always
+  authorized_key:
+    user: nwaboi
+    key: "cc"
