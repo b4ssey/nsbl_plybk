@@ -30,7 +30,7 @@
       tags: always
       authorized_key:
         user: nwaboi
-        key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJehejr5jyENaDJa8n64MNA/mKrsspFpGEuT5S1wQIhu ansible"
+        key: "cc"
 
     - name: add sudoers file for nwaboi
       tags: always
